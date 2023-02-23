@@ -1,3 +1,5 @@
+nextflow.enable.dsl=2
+
 params.library = null
 params.indexs = null
 params.output = null
