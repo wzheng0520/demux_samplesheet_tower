@@ -51,7 +51,7 @@
             "description": "",
             "default": "",
             "properties": {
-                "outDIR": {
+                "output": {
                     "type": "string",
                     "description": "Location to store output files"
                 }
