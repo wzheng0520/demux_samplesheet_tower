@@ -1,0 +1,14 @@
+/Users/wzheng/opt/anaconda3/lib/python3.9/site-packages/openpyxl/worksheet/_read_only.py:79: UserWarning: Data Validation extension is not supported and will be removed
+  for idx, row in parser.parse():
+Traceback (most recent call last):
+['HUVEC_50-1', 'CGATGT', '']
+[['HUVEC_50-1', 'CGATGT', '', 'seqonly']]
+['HUVEC_50-2', 'TGACCA', '']
+[['Sample_ID', 'index', 'index2', 'Sample_Project'], ['HUVEC_50-1', 'CGATGT', '', 'seqonly'], ['HUVEC_50-2', 'TGACCA', '', 'seqonly']]
+  File "/Users/wzheng/Desktop/train/work/71/e34422714078d7f080c98a71a6ae9e/.command.sh", line 116, in <module>
+    main()
+  File "/Users/wzheng/Desktop/train/work/71/e34422714078d7f080c98a71a6ae9e/.command.sh", line 114, in main
+    sequencing_only_samplesheet('20230127_SEQonly_SDI-IGH.xlsx', 'test.csv', 'seqonly', 'EXP','Y9;I9')
+  File "/Users/wzheng/Desktop/train/work/71/e34422714078d7f080c98a71a6ae9e/.command.sh", line 111, in sequencing_only_samplesheet
+    raise Exception('Sorry, we do not support this library type')
+Exception: Sorry, we do not support this library type

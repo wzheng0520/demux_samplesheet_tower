@@ -1,0 +1,16 @@
+/Users/wzheng/opt/anaconda3/lib/python3.9/site-packages/openpyxl/worksheet/_read_only.py:79: UserWarning: Data Validation extension is not supported and will be removed
+  for idx, row in parser.parse():
+Traceback (most recent call last):
+  File "/Users/wzheng/Desktop/train/work/8c/2a3e2196effcfe6d401704b9e2dd36/.command.sh", line 116, in <module>
+    main()
+  File "/Users/wzheng/Desktop/train/work/8c/2a3e2196effcfe6d401704b9e2dd36/.command.sh", line 114, in main
+    sequencing_only_samplesheet('mRNA-seq_library_QC_and_pooling.xlsx', 'test.csv', 'seqonly', 'EXP','Y9;I9')
+  File "/Users/wzheng/Desktop/train/work/8c/2a3e2196effcfe6d401704b9e2dd36/.command.sh", line 21, in sequencing_only_samplesheet
+    samplesheet_df=df[['Sample Name(s)', 'Index 1 (i7) sequences', 'index 2 (i5) sequences']].fillna('')
+  File "/Users/wzheng/opt/anaconda3/lib/python3.9/site-packages/pandas/core/frame.py", line 3511, in __getitem__
+    indexer = self.columns._get_indexer_strict(key, "columns")[1]
+  File "/Users/wzheng/opt/anaconda3/lib/python3.9/site-packages/pandas/core/indexes/base.py", line 5782, in _get_indexer_strict
+    self._raise_if_missing(keyarr, indexer, axis_name)
+  File "/Users/wzheng/opt/anaconda3/lib/python3.9/site-packages/pandas/core/indexes/base.py", line 5842, in _raise_if_missing
+    raise KeyError(f"None of [{key}] are in the [{axis_name}]")
+KeyError: "None of [Index(['Sample Name(s)', 'Index 1 (i7) sequences', 'index 2 (i5) sequences'], dtype='object')] are in the [columns]"

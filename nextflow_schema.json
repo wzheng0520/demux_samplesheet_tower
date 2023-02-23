@@ -1,0 +1,69 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "$id": "https://raw.githubusercontent.com/./master/nextflow_schema.json",
+    "title": ". pipeline parameters",
+    "description": "",
+    "type": "object",
+    "definitions": {
+        "input": {
+            "title": "Input",
+            "type": "object",
+            "description": "",
+            "default": "",
+            "properties": {
+                "library": {
+                    "type": "string",
+                    "description": "Location to library QC and pooling"
+                },
+                "indexs": {
+                    "type": "string",
+                    "description": "Location of index plates"
+                },
+                "eln": {
+                    "type": "string",
+                    "description": "Experimenet Benchling ID"
+                },
+                "override": {
+                    "type": "string",
+                    "description": "Override cycle"
+                },
+                "seqonly": {
+                    "type": "string",
+                    "description": "Sequencing only or not",
+                    "enum": [
+                        "yes",
+                        "no"
+                    ]
+                },
+                 "type": {
+                    "type": "string",
+                    "description": "Type of library",
+                    "enum": [
+                        "illumina",
+                        "10x"
+                    ]
+                }
+            }
+        },
+        "output": {
+            "title": "Output",
+            "type": "object",
+            "description": "",
+            "default": "",
+            "properties": {
+                "outDIR": {
+                    "type": "string",
+                    "description": "Location to store output files"
+                }
+            }
+        }
+    },
+    "allOf": [
+        {
+            "$ref": "#/definitions/input"
+        },
+        {
+            "$ref": "#/definitions/output"
+        }
+    ]
+}

@@ -1,0 +1,2 @@
+/Users/wzheng/opt/anaconda3/lib/python3.9/site-packages/openpyxl/worksheet/_read_only.py:79: UserWarning: Data Validation extension is not supported and will be removed
+  for idx, row in parser.parse():

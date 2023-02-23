@@ -1,0 +1,4 @@
+['HUVEC_50-1', 'CGATGT', '']
+[['HUVEC_50-1', 'CGATGT', '', 'seqonly']]
+['HUVEC_50-2', 'TGACCA', '']
+[['Sample_ID', 'index', 'index2', 'Sample_Project'], ['HUVEC_50-1', 'CGATGT', '', 'seqonly'], ['HUVEC_50-2', 'TGACCA', '', 'seqonly']]
