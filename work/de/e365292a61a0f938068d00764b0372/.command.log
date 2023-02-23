@@ -1,6 +1,0 @@
-Traceback (most recent call last):
-  File "/Users/wzheng/Desktop/train/work/de/e365292a61a0f938068d00764b0372/.command.sh", line 86, in <module>
-    main()
-  File "/Users/wzheng/Desktop/train/work/de/e365292a61a0f938068d00764b0372/.command.sh", line 84, in main
-    illumina_sample_sheet(library, indexs, output, eln)
-NameError: name 'library' is not defined
