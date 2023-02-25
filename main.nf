@@ -11,8 +11,7 @@ params.type = null
 process illumina_sample_sheet {
 	container "${ workflow.containerEngine == 'singularity' && !task.ext.singularity_pull_docker_container ?
         'https://depot.galaxyproject.org/singularity/pandas:0.17.1' :
-        'quay.io/biocontainers/pandas' :
-        'quay.io/biocontainers/openpyxl' }"
+        'quay.io/biocontainers/pandas' }"
 
 	input:
 	path library
@@ -32,8 +31,7 @@ process illumina_sample_sheet {
 process tenx_sample_sheet {
 	container "${ workflow.containerEngine == 'singularity' && !task.ext.singularity_pull_docker_container ?
         'https://depot.galaxyproject.org/singularity/pandas:0.17.1' :
-        'quay.io/biocontainers/pandas' :
-        'quay.io/biocontainers/openpyxl' }"
+        'quay.io/biocontainers/pandas' }"
 
 	input:
 	path library
@@ -54,8 +52,7 @@ process tenx_sample_sheet {
 process seqonly_sample_sheet {
 	container "${ workflow.containerEngine == 'singularity' && !task.ext.singularity_pull_docker_container ?
         'https://depot.galaxyproject.org/singularity/pandas:0.17.1' :
-        'quay.io/biocontainers/pandas' :
-        'quay.io/biocontainers/openpyxl' }"
+        'quay.io/biocontainers/pandas' }"
 
 	input:
 	path library
