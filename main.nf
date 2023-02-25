@@ -11,8 +11,9 @@ params.type = null
 process illumina_sample_sheet {
 	container "${ workflow.containerEngine == 'singularity' && !task.ext.singularity_pull_docker_container ?
         'https://depot.galaxyproject.org/singularity/pandas:0.17.1' :
-        'quay.io/biocontainers/pandas: 1.4.3' :
-        'quay.io/biocontainers/openpyxl:1.8.6--py36_0' }"
+        'quay.io/biocontainers/pandas: 1.4.3' + 'quay.io/biocontainers/openpyxl:1.8.6--py36_0' }"
+    cpus 2
+    memory '8 GB'
 
 	input:
 	path library
@@ -34,8 +35,9 @@ process tenx_sample_sheet {
         'https://depot.galaxyproject.org/singularity/pandas:0.17.1' :
         'quay.io/biocontainers/pandas: 1.4.3' :
         'quay.io/biocontainers/openpyxl:1.8.6--py36_0' :
-        'quay.io/biocontainers/openpyxl:1.8.6--py36_0' :
-        'quay.io/biocontainers/openpyxl:1.8.6--py36_0'  }"
+        'quay.io/biocontainers/openpyxl:1.8.6--py36_0'+'quay.io/biocontainers/openpyxl:1.8.6--py36_0'  }"
+    cpus 2
+    memory '8 GB'
 
 	input:
 	path library
@@ -57,8 +59,9 @@ process seqonly_sample_sheet {
 	container "${ workflow.containerEngine == 'singularity' && !task.ext.singularity_pull_docker_container ?
         'https://depot.galaxyproject.org/singularity/pandas:0.17.1' :
         'quay.io/biocontainers/pandas: 1.4.3' :
-        'quay.io/biocontainers/openpyxl:1.8.6--py36_0' :
-        'quay.io/biocontainers/openpyxl:1.8.6--py36_0'  }"
+        'quay.io/biocontainers/openpyxl:1.8.6--py36_0'+'quay.io/biocontainers/openpyxl:1.8.6--py36_0'  }"
+    cpus 2
+    memory '8 GB'
 
 	input:
 	path library
