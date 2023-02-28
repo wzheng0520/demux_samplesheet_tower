@@ -9,11 +9,8 @@ params.seqonly = null
 params.type = null
 
 process illumina_sample_sheet {
-	container "${ workflow.containerEngine == 'singularity' && !task.ext.singularity_pull_docker_container ?
-        'https://depot.galaxyproject.org/singularity/pandas:0.17.1' + 'https://depot.galaxyproject.org/singularity/openpyxl%3A2.4.0--py36_0' }"
-    cpus 2
-    memory '8 GB'
-
+	process.container = 'docker://quay.io/biocontainers/multiqc:1.3--py35_2'
+	singularity.enabled = true
 	input:
 	path library
 	path indexs
@@ -21,7 +18,7 @@ process illumina_sample_sheet {
 	val eln
 
 	output:
-	path(*.csv), emit: samplesheet
+	path("*.csv"), emit: samplesheet_demux
 
 
 	script:
@@ -30,8 +27,8 @@ process illumina_sample_sheet {
 }
 
 process tenx_sample_sheet {
-	container "${ workflow.containerEngine == 'singularity' && !task.ext.singularity_pull_docker_container ?
-        'https://depot.galaxyproject.org/singularity/pandas:0.17.1' + 'https://depot.galaxyproject.org/singularity/openpyxl%3A2.4.0--py36_0' }"
+	process.container = "quay.io/biocontainers/pandas:1.4.3" + ":quay.io/biocontainers/openpyxl:1.8.6--py36_0"
+	singularity.enabled = true
     cpus 2
     memory '8 GB'
 
@@ -43,7 +40,7 @@ process tenx_sample_sheet {
 	val override
 
 	output:
-	path('*.csv'), emit: samplesheet
+	path("*.csv"), emit: samplesheet_demux
 
 
 	script:
@@ -52,8 +49,8 @@ process tenx_sample_sheet {
 }
 
 process seqonly_sample_sheet {
-	container "${ workflow.containerEngine == 'singularity' && !task.ext.singularity_pull_docker_container ?
-        'https://depot.galaxyproject.org/singularity/pandas:0.17.1' + 'https://depot.galaxyproject.org/singularity/openpyxl%3A2.4.0--py36_0' }"
+	process.container = "quay.io/biocontainers/pandas:1.4.3" + ":quay.io/biocontainers/openpyxl:1.8.6--py36_0"
+	singularity.enabled = true
     cpus 2
     memory '8 GB'
 
@@ -65,7 +62,7 @@ process seqonly_sample_sheet {
 	val override
 
 	output:
-	path(*.csv), emit: samplesheet
+	path("*.csv"), emit: samplesheet_demux
 
 
 	script:
