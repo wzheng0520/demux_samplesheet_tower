@@ -10,7 +10,7 @@ params.type = null
 
 process illumina_sample_sheet {
 	container "${ workflow.containerEngine == 'singularity' && !task.ext.singularity_pull_docker_container ?
-        ''https://depot.galaxyproject.org/singularity/pandas:0.17.1' + 'https://depot.galaxyproject.org/singularity/openpyxl%3A2.4.0--py36_0' }"
+        'https://depot.galaxyproject.org/singularity/pandas:0.17.1' + 'https://depot.galaxyproject.org/singularity/openpyxl%3A2.4.0--py36_0' }"
     cpus 2
     memory '8 GB'
 
