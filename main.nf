@@ -27,7 +27,7 @@ process illumina_sample_sheet {
 }
 
 process tenx_sample_sheet {
-	process.container = "quay.io/biocontainers/pandas:1.4.3" + ":quay.io/biocontainers/openpyxl:1.8.6--py36_0"
+	process.container = "quay.io/biocontainers/pandas:1.4.3"
 	singularity.enabled = true
     cpus 2
     memory '8 GB'
@@ -49,7 +49,7 @@ process tenx_sample_sheet {
 }
 
 process seqonly_sample_sheet {
-	process.container = "quay.io/biocontainers/pandas:1.4.3" + ":quay.io/biocontainers/openpyxl:1.8.6--py36_0"
+	process.container = "quay.io/biocontainers/pandas:1.4.3"
 	singularity.enabled = true
     cpus 2
     memory '8 GB'
