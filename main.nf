@@ -21,7 +21,7 @@ process illumina_sample_sheet {
 	val eln
 
 	output:
-	path(output), emit: samplesheet
+	path(*.csv), emit: samplesheet
 
 
 	script:
@@ -65,7 +65,7 @@ process seqonly_sample_sheet {
 	val override
 
 	output:
-	path(output), emit: samplesheet
+	path(*.csv), emit: samplesheet
 
 
 	script:
