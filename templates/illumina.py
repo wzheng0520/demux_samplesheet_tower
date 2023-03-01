@@ -6,10 +6,10 @@ Created on Fri Dec  2 13:24:21 2022
 @author: wzheng
 """
 
-import os
-import sys
-import glob
-import argparse
+#import os
+#import sys
+#import glob
+#import argparse
 import pandas as pd
 import csv
 
@@ -66,7 +66,7 @@ def illumina_sample_sheet(library, indexs, output, eln):
     bclsetting2=['BarcodeMismatchesIndex2', '0', None, None]
     bclsetting3=['NoLaneSplitting', 'true', None, None]
     bcldata=['[BCLConvert_Data]', None, None, None]
-    with open(output, 'w') as f:
+    with open('$output', 'w') as f:
         writer = csv.writer(f)
         writer.writerow(head)
         writer.writerow(head_contain)

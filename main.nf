@@ -17,7 +17,7 @@ process illumina_sample_sheet {
 	val eln
 
 	output:
-	path("*samplesheet.csv"), emit: samplesheet_demux
+	path "samplesheet_demux.csv", emit: samplesheet_demux
 
 
 	script:
@@ -39,7 +39,7 @@ process tenx_sample_sheet {
 	val override
 
 	output:
-	path("*samplesheet.csv"), emit: samplesheet_demux
+	path "samplesheet_demux.csv", emit: samplesheet_demux
 
 
 	script:
@@ -60,7 +60,7 @@ process seqonly_sample_sheet {
 	val override
 
 	output:
-	path("*samplesheet.csv"), emit: samplesheet_demux
+	path "samplesheet_demux.csv", emit: samplesheet_demux
 
 
 	script:
