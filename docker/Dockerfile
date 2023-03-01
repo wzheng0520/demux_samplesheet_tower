@@ -9,3 +9,6 @@ RUN apt-get update && apt upgrade -y \
 	&& rm -fr /var/lib/apt/lists/*
 
 RUN pip3 install --no-cache-dir -r /root/requirements.txt
+
+
+

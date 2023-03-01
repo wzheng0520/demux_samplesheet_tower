@@ -9,7 +9,7 @@ params.seqonly = null
 params.type = null
 
 process illumina_sample_sheet {
-	container = "quay.io/fhcrc-microbiome/python-pandas:e526aad"
+	container = "wzheng0520/samplesheet_demux"
 	input:
 	path library
 	path indexs
@@ -26,7 +26,7 @@ process illumina_sample_sheet {
 }
 
 process tenx_sample_sheet {
-	container = "quay.io/fhcrc-microbiome/python-pandas:e526aad"
+	container = "wzheng0520/samplesheet_demux"
 	
     cpus 2
     memory '8 GB'
@@ -48,7 +48,7 @@ process tenx_sample_sheet {
 }
 
 process seqonly_sample_sheet {
-	container = "quay.io/fhcrc-microbiome/python-pandas:e526aad"
+	container = "wzheng0520/samplesheet_demux"
     cpus 2
     memory '8 GB'
 
