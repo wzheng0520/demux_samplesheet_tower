@@ -69,7 +69,7 @@ def sequencing_only_samplesheet(library, output, eln, type, override):
         bclsetting2=['BarcodeMismatchesIndex2', '0', None, None]
         bclsetting3=['NoLaneSplitting', 'true', None, None]
         bcldata=['[BCLConvert_Data]', None, None, None]
-        with open(output, 'w') as f:
+        with open('$output', 'w') as f:
             writer = csv.writer(f)
             writer.writerow(head)
             writer.writerow(head_contain)
