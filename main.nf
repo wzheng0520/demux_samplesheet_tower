@@ -11,7 +11,7 @@ params.seqonly = null
 params.type = null
 
 process illumina_sample_sheet {
-	publishDir output, mode: 'copy'
+	publishDir { "${params.output}" }, mode: 'copy', pattern: 'samplesheet_demux.csv'
 	container "wzheng0520/samplesheet_demux:samplesheet_demux"
 	//docker.enabled = true
 	input:
@@ -21,7 +21,7 @@ process illumina_sample_sheet {
 	val eln
 
 	output:
-	path "samplesheet_demux.csv", emit: samplesheet_demux
+	path ("samplesheet_demux.csv"), emit: samplesheet_demux
 
 
 	script:
