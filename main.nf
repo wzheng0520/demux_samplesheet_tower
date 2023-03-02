@@ -66,7 +66,7 @@ process seqonly_sample_sheet {
 	val override
 
 	output:
-	path "*samplesheet_demux.csv", emit: samplesheet_demux
+	path "samplesheet_demux.csv", emit: samplesheet_demux
 
 
 	script:
