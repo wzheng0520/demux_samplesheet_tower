@@ -135,7 +135,7 @@ def sequencing_only_samplesheet(library, output, eln, type, override):
         #raise Exception('Sorry, we do not support this library type')
     '''
 def main():
-    sequencing_only_samplesheet('$library', '$output', '$eln', '$type', '$override')
+    sequencing_only_samplesheet('$library', '$eln', '$output',  '$type', '$override')
 if __name__ == "__main__":
     main()
 
