@@ -54,9 +54,6 @@ process tenx_sample_sheet {
 process seqonly_sample_sheet {
 	publishDir "${params.output}", mode: 'copy', pattern: 'samplesheet_demux.csv'
 	container "wzheng0520/samplesheet_demux:samplesheet_demux"
-    cpus 2
-    memory '8 GB'
-
 	input:
 	path library
 	path output
