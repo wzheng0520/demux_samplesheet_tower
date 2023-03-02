@@ -1,0 +1,3 @@
+reports:
+  'samplesheet_demux.csv'
+    display: "samplesheet"
