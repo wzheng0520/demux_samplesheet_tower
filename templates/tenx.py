@@ -136,7 +136,7 @@ def tenx_sample_sheet(library, indexs, output, eln, override):
     bclsetting3=['MinimumTrimmedReadLength', '8', None, None]
     bclsetting4=['MaskShortReads', '8', None, None]
     bcldata=['[BCLConvert_Data]', None, None, None]
-    with open(output, 'w') as f:
+    with open('$output', 'w') as f:
         writer = csv.writer(f)
         writer.writerow(head)
         writer.writerow(head_contain)

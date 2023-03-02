@@ -9,12 +9,10 @@ params.eln = null
 params.override = null
 params.seqonly = null
 params.type = null
-//copy_path=Channel.fromPath(params.output).map{ it.parent }
-//params.copy_path = copy_path
+
 process illumina_sample_sheet {
 	publishDir "${params.output}", mode: 'copy', pattern: 'samplesheet_demux.csv'
 	container "wzheng0520/samplesheet_demux:samplesheet_demux"
-	//docker.enabled = true
 	input:
 	path library
 	path indexs
@@ -31,8 +29,8 @@ process illumina_sample_sheet {
 }
 
 process tenx_sample_sheet {
+	publishDir "${params.output}", mode: 'copy', pattern: 'samplesheet_demux.csv'
 	container "wzheng0520/samplesheet_demux:samplesheet_demux"
-	//docker.enabled = true
 	
     cpus 2
     memory '8 GB'
@@ -54,8 +52,8 @@ process tenx_sample_sheet {
 }
 
 process seqonly_sample_sheet {
+	publishDir "${params.output}", mode: 'copy', pattern: 'samplesheet_demux.csv'
 	container "wzheng0520/samplesheet_demux:samplesheet_demux"
-	//docker.enabled = true
     cpus 2
     memory '8 GB'
 
@@ -87,7 +85,7 @@ workflow {
 	seqonly = Channel.of(params.seqonly)
 	file_path_output = Channel.fromPath(params.output).map{ it.parent + '/samplesheet_demux.csv' }
 	if (params.seqonly == 'yes'){
-	seqonly_sample_sheet(library, output, type, eln, override)
+	seqonly_sample_sheet(library, file_path_output, type, eln, override)
 	}
 	
 	else{
@@ -95,7 +93,7 @@ workflow {
 	illumina_sample_sheet(library, indexs, file_path_output, eln)
 	}
 	else{
-	tenx_sample_sheet(library, indexs, output, eln, override)
+	tenx_sample_sheet(library, indexs, file_path_output, eln, override)
 	}
 
 	}
