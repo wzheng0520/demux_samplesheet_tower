@@ -57,8 +57,8 @@ process seqonly_sample_sheet {
 	input:
 	path library
 	path output
-	val type
 	val eln
+	val type
 	val override
 
 	output:
