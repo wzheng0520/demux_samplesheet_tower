@@ -83,7 +83,7 @@ def sequencing_only_samplesheet(library, output, eln, type, override):
             for i in samplesheet_data:
                 print(i)
                 writer.writerow(i)
-    elif type=='10X':
+    elif type=='10x':
         head = ['[Header]', None, None, None]
         head_contain=['FileFormatVersion', '2', None, None]
         empty_row=['',None, None, None]
