@@ -16,7 +16,7 @@ import re
 
 def sequencing_only_samplesheet(library, output, eln, type, override):
     df = pd.read_excel(library, skiprows=[0,1,3])    
-    #print(df)
+    print(df)
     #samplesheet_df=df[['Sample Name(s)', 'Index 1 (i7) sequences', 'index 2 (i5) sequences        (Forward)                    MiSeq']].fillna('')
     samplesheet_df=df[['Sample Name(s)', 'Index 1 (i7) sequences', 'index 2 (i5) sequences']].fillna('')
     samplesheet_list=samplesheet_df.dropna().apply(list, axis=1).tolist()
