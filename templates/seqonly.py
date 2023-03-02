@@ -56,7 +56,7 @@ def sequencing_only_samplesheet(library, output, eln, type, override):
             else:
                 i.append(eln)
                 samplesheet_data.append(i)
-                print(samplesheet_data)
+                #print(samplesheet_data)
                 if ['Sample_ID', 'index', 'index2','Sample_Project'] not in samplesheet_data:
                     samplesheet_data.insert(0, ['Sample_ID', 'index', 'index2','Sample_Project'])
     #print(samplesheet_data)
