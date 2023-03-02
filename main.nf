@@ -1,3 +1,5 @@
+#!/usr/bin/env nextflow
+
 nextflow.enable.dsl=2
 
 params.library = null
@@ -9,7 +11,7 @@ params.seqonly = null
 params.type = null
 
 process illumina_sample_sheet {
-	container  = "wzheng0520/samplesheet_demux:samplesheet_demux"
+	container "wzheng0520/samplesheet_demux:samplesheet_demux"
 	//docker.enabled = true
 	input:
 	path library
@@ -27,7 +29,7 @@ process illumina_sample_sheet {
 }
 
 process tenx_sample_sheet {
-	container  = "wzheng0520/samplesheet_demux:samplesheet_demux"
+	container "wzheng0520/samplesheet_demux:samplesheet_demux"
 	//docker.enabled = true
 	
     cpus 2
@@ -50,7 +52,7 @@ process tenx_sample_sheet {
 }
 
 process seqonly_sample_sheet {
-	container  = "wzheng0520/samplesheet_demux:samplesheet_demux"
+	container "wzheng0520/samplesheet_demux:samplesheet_demux"
 	//docker.enabled = true
     cpus 2
     memory '8 GB'
