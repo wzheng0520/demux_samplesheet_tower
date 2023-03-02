@@ -25,54 +25,40 @@ def sequencing_only_samplesheet(library, output, eln, type, override):
     for i in samplesheet_list:
         #print(i)
         #match the provided 10x Multiome_ATAC format NNNNNNNN\tNNNNNNNN\tNNNNNNNN\tNNNNNNNN
-        if type == '10x':
-            if re.match('[A-Z]{8}\s[A-Z]{8}\s[A-Z]{8}\s', i[1], flags=0):
-                #Not provide ELN, the sample_project column will not be on there
-                if eln is None:
-                    i.remove('')    #remove empty index 2
-                    i[1]=i[1].split("\t")
-                    for a in i[1]:
-                        samplesheet_data.append([i[0],a])
-                    if ['Sample_ID', 'index'] not in samplesheet_data:
-                        samplesheet_data.insert(0, ['Sample_ID', 'index'])
-                #ELN are provided
-                else:
-                    i.append(eln)
-                    i.remove('')
-                    i[1]=i[1].split("\t")
-                    for a in i[1]:
-                        samplesheet_data.append([i[0],a, i[2]])
-                    if ['Sample_ID', 'index','Sample_Project'] not in samplesheet_data:
-                        samplesheet_data.insert(0, ['Sample_ID', 'index','Sample_Project'])
-            
-            #10x Multiome_GEX, Illumina, copy from provided samplesheet
-            else:
-                #Not provide ELN, the sample_project column will not be on there
-                if eln is None:
-                    samplesheet_data.append(i)
-                    #print(samplesheet_data)
-                    if ['Sample_ID', 'index', 'index2'] not in samplesheet_data:
-                        samplesheet_data.insert(0, ['Sample_ID', 'index', 'index2'])
-                #ELN are provided
-                else:
-                    i.append(eln)
-                    samplesheet_data.append(i)
-                    print(samplesheet_data)
-                    if ['Sample_ID', 'index', 'index2','Sample_Project'] not in samplesheet_data:
-                        samplesheet_data.insert(0, ['Sample_ID', 'index', 'index2','Sample_Project'])
-        else:
+        if re.match('[A-Z]{8}\s[A-Z]{8}\s[A-Z]{8}\s', i[1], flags=0):
+            #Not provide ELN, the sample_project column will not be on there
             if eln is None:
-                    samplesheet_data.append(i)
-                    #print(samplesheet_data)
-                    if ['Sample_ID', 'index', 'index2'] not in samplesheet_data:
-                        samplesheet_data.insert(0, ['Sample_ID', 'index', 'index2'])
-                #ELN are provided
-                else:
-                    i.append(eln)
-                    samplesheet_data.append(i)
-                    print(samplesheet_data)
-                    if ['Sample_ID', 'index', 'index2','Sample_Project'] not in samplesheet_data:
-                        samplesheet_data.insert(0, ['Sample_ID', 'index', 'index2','Sample_Project'])
+                i.remove('')    #remove empty index 2
+                i[1]=i[1].split("\t")
+                for a in i[1]:
+                    samplesheet_data.append([i[0],a])
+                if ['Sample_ID', 'index'] not in samplesheet_data:
+                    samplesheet_data.insert(0, ['Sample_ID', 'index'])
+            #ELN are provided
+            else:
+                i.append(eln)
+                i.remove('')
+                i[1]=i[1].split("\t")
+                for a in i[1]:
+                    samplesheet_data.append([i[0],a, i[2]])
+                if ['Sample_ID', 'index','Sample_Project'] not in samplesheet_data:
+                    samplesheet_data.insert(0, ['Sample_ID', 'index','Sample_Project'])
+        
+        #10x Multiome_GEX, Illumina, copy from provided samplesheet
+        else:
+            #Not provide ELN, the sample_project column will not be on there
+            if eln is None:
+                samplesheet_data.append(i)
+                #print(samplesheet_data)
+                if ['Sample_ID', 'index', 'index2'] not in samplesheet_data:
+                    samplesheet_data.insert(0, ['Sample_ID', 'index', 'index2'])
+            #ELN are provided
+            else:
+                i.append(eln)
+                samplesheet_data.append(i)
+                print(samplesheet_data)
+                if ['Sample_ID', 'index', 'index2','Sample_Project'] not in samplesheet_data:
+                    samplesheet_data.insert(0, ['Sample_ID', 'index', 'index2','Sample_Project'])
     #print(samplesheet_data)
     if type=='illumina':
         head = ['[Header]', None, None, None]
