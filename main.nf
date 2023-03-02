@@ -81,8 +81,9 @@ workflow {
 	override = Channel.of(params.override)
 	seqonly = Channel.of(params.seqonly)
 	file_path_output = Channel.fromPath(params.output).map{ it.parent + '/samplesheet_demux.csv' }
+	
 	if (params.seqonly == 'yes'){
-	seqonly_sample_sheet(library, file_path_output, type, eln, override)
+	seqonly_sample_sheet(library, file_path_output, eln, type, override)
 	}
 	
 	else{
