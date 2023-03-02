@@ -60,30 +60,6 @@ def sequencing_only_samplesheet(library, output, eln, type, override):
                 if ['Sample_ID', 'index', 'index2','Sample_Project'] not in samplesheet_data:
                     samplesheet_data.insert(0, ['Sample_ID', 'index', 'index2','Sample_Project'])
     #print(samplesheet_data)
-    head = ['[Header]', None, None, None]
-    head_contain=['FileFormatVersion', '2', None, None]
-    empty_row=['',None, None, None]
-    bclsetting=['[BCLConvert_Settings]', None, None, None]
-    bclsetting1=['CreateFastqForIndexReads', '1', None, None]
-    bclsetting2=['OverrideCycles', override, None, None]
-    bclsetting3=['MinimumTrimmedReadLength', '8', None, None]
-    bclsetting4=['MaskShortReads', '8', None, None]
-    bcldata=['[BCLConvert_Data]', None, None, None]
-    with open('$output', 'w') as f:
-        writer = csv.writer(f)
-        writer.writerow(head)
-        writer.writerow(head_contain)
-        writer.writerow(empty_row)
-        writer.writerow(bclsetting)
-        writer.writerow(bclsetting1)
-        writer.writerow(bclsetting2)
-        writer.writerow(bclsetting3)
-        writer.writerow(bclsetting4)
-        writer.writerow(empty_row)
-        writer.writerow(bcldata)
-        for i in samplesheet_data:
-            writer.writerow(i)
-    '''
     if type=='illumina':
         head = ['[Header]', None, None, None]
         head_contain=['FileFormatVersion', '2', None, None]
@@ -131,9 +107,8 @@ def sequencing_only_samplesheet(library, output, eln, type, override):
             writer.writerow(bcldata)
             for i in samplesheet_data:
                 writer.writerow(i)
-    #else:
-        #raise Exception('Sorry, we do not support this library type')
-    '''
+    else:
+        raise Exception('Sorry, we do not support this library type')
 def main():
     sequencing_only_samplesheet('$library', '$eln', '$output',  '$type', '$override')
 if __name__ == "__main__":
