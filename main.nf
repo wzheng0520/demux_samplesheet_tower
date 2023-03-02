@@ -10,9 +10,9 @@ params.override = null
 params.seqonly = null
 params.type = null
 copy_path=Channel.fromPath(params.output).map{ it.parent }
-
+params.copy_path = copy_path
 process illumina_sample_sheet {
-	publishDir copy_path, mode: 'copy', pattern: 'samplesheet_demux.csv'
+	publishDir "${params.copy_path}", mode: 'copy', pattern: 'samplesheet_demux.csv'
 	container "wzheng0520/samplesheet_demux:samplesheet_demux"
 	//docker.enabled = true
 	input:
