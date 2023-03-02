@@ -21,7 +21,7 @@ process illumina_sample_sheet {
 	val eln
 
 	output:
-	file "${params.output}/samplesheet_demux.csv", emit: samplesheet_demux
+	path "${params.output}", emit: samplesheet_demux
 
 
 	script:
