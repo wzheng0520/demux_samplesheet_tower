@@ -107,8 +107,8 @@ def sequencing_only_samplesheet(library, output, eln, type, override):
             writer.writerow(bcldata)
             for i in samplesheet_data:
                 writer.writerow(i)
-    else:
-        raise Exception('Sorry, we do not support this library type')
+    #else:
+        #raise Exception('Sorry, we do not support this library type')
 
 def main():
     sequencing_only_samplesheet('$library', '$output', '$eln', '$type', '$override')
