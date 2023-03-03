@@ -54,6 +54,7 @@ process tenx_sample_sheet {
 process seqonly_sample_sheet {
 	publishDir "${params.output}", mode: 'copy', pattern: 'samplesheet_demux.csv'
 	container "wzheng0520/samplesheet_demux:samplesheet_demux"
+
 	input:
 	path library
 	path output
@@ -63,11 +64,10 @@ process seqonly_sample_sheet {
 
 	output:
 	path "samplesheet_demux.csv", emit: samplesheet_demux
-
-
-	script:
+    
+    script:
 	template 'seqonly.py'
-	
+
 }
 
 
