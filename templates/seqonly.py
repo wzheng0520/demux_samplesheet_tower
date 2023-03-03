@@ -25,7 +25,8 @@ def sequencing_only_samplesheet(library, eln, type, override):
     for i in samplesheet_list:
         #print(i)
         #match the provided 10x Multiome_ATAC format NNNNNNNN\tNNNNNNNN\tNNNNNNNN\tNNNNNNNN
-        if re.match('[A-Z]{8}\s[A-Z]{8}\s[A-Z]{8}\s', i[1], flags=0):
+        #if re.match('[A-Z]{8}\s[A-Z]{8}\s[A-Z]{8}\s', i[1], flags=0):
+        if re.match('[A-Z]{8,8}\\t[A-Z]{8,8}\\t[A-Z]{8,8}\\t[A-Z]{8,8}', i[1], flags=0):
             print('ATAC')
             #Not provide ELN, the sample_project column will not be on there
             if eln is None:
