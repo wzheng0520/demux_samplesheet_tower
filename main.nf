@@ -83,7 +83,7 @@ workflow {
 	file_path_output = Channel.fromPath(params.output).map{ it+ '/samplesheet_demux.csv' }
 	
 	if (params.seqonly == 'yes'){
-	seqonly_sample_sheet(library, file_path_output, eln, type, override)
+	seqonly_sample_sheet(library, output, eln, type, override)
 	}
 	
 	else{
