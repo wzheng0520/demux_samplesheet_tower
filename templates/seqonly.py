@@ -26,6 +26,7 @@ def sequencing_only_samplesheet(library, eln, type, override):
         #print(i)
         #match the provided 10x Multiome_ATAC format NNNNNNNN\tNNNNNNNN\tNNNNNNNN\tNNNNNNNN
         if re.match('[A-Z]{8}\s[A-Z]{8}\s[A-Z]{8}\s', i[1], flags=0):
+            print('ATAC')
             #Not provide ELN, the sample_project column will not be on there
             if eln is None:
                 i.remove('')    #remove empty index 2
@@ -46,6 +47,7 @@ def sequencing_only_samplesheet(library, eln, type, override):
         
         #10x Multiome_GEX, Illumina, copy from provided samplesheet
         else:
+            print('GEX')
             #Not provide ELN, the sample_project column will not be on there
             if eln is None:
                 samplesheet_data.append(i)
