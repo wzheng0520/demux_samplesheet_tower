@@ -14,7 +14,7 @@ import csv
 import re
 
 
-def sequencing_only_samplesheet(library, eln, output, type, override):
+def sequencing_only_samplesheet(library, eln, type, override):
     df = pd.read_excel(library, skiprows=[0,1,3])    
     print(df)
     #samplesheet_df=df[['Sample Name(s)', 'Index 1 (i7) sequences', 'index 2 (i5) sequences        (Forward)                    MiSeq']].fillna('')
@@ -69,7 +69,7 @@ def sequencing_only_samplesheet(library, eln, output, type, override):
         bclsetting2=['BarcodeMismatchesIndex2', '0', None, None]
         bclsetting3=['NoLaneSplitting', 'true', None, None]
         bcldata=['[BCLConvert_Data]', None, None, None]
-        with open('$output', 'w') as f:
+        with open('samplesheet_demux.csv', 'w') as f:
             writer = csv.writer(f)
             writer.writerow(head)
             writer.writerow(head_contain)
@@ -93,7 +93,7 @@ def sequencing_only_samplesheet(library, eln, output, type, override):
         bclsetting3=['MinimumTrimmedReadLength', '8', None, None]
         bclsetting4=['MaskShortReads', '8', None, None]
         bcldata=['[BCLConvert_Data]', None, None, None]
-        with open('$output', 'w') as f:
+        with open('samplesheet_demux.csv', 'w') as f:
             writer = csv.writer(f)
             writer.writerow(head)
             writer.writerow(head_contain)
@@ -110,7 +110,7 @@ def sequencing_only_samplesheet(library, eln, output, type, override):
     else:
         raise Exception('Sorry, we do not support this library type')
 def main():
-    sequencing_only_samplesheet('$library', '$eln', '$output', '$type', '$override')
+    sequencing_only_samplesheet('$library', '$eln', '$type', '$override')
 
 if __name__ == "__main__":
     main()

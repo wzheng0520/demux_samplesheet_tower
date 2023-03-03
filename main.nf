@@ -58,7 +58,6 @@ process seqonly_sample_sheet {
 	input:
 	path library
 	val eln
-	path output
 	val type
 	val override
 
@@ -83,7 +82,7 @@ workflow {
 	file_path_output = Channel.fromPath(params.output).map{ it+ '/samplesheet_demux.csv' }
 	
 	if (params.seqonly == 'yes'){
-	seqonly_sample_sheet(library, eln, file_path_output, type, override)
+	seqonly_sample_sheet(library, eln, type, override)
 	}
 	
 	else{
