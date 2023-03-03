@@ -14,7 +14,7 @@ import csv
 import re
 
 
-def sequencing_only_samplesheet(library, output, eln, type, override):
+def sequencing_only_samplesheet(library, eln, output, type, override):
     df = pd.read_excel(library, skiprows=[0,1,3])    
     print(df)
     #samplesheet_df=df[['Sample Name(s)', 'Index 1 (i7) sequences', 'index 2 (i5) sequences        (Forward)                    MiSeq']].fillna('')
@@ -110,7 +110,7 @@ def sequencing_only_samplesheet(library, output, eln, type, override):
     else:
         raise Exception('Sorry, we do not support this library type')
 def main():
-    sequencing_only_samplesheet('$library', '$output', '$eln', '$type', '$override')
+    sequencing_only_samplesheet('$library', '$eln', '$output', '$type', '$override')
 
 if __name__ == "__main__":
     main()
