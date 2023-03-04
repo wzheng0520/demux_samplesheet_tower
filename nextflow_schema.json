@@ -40,7 +40,8 @@
                     "description": "Type of library",
                     "enum": [
                         "illumina",
-                        "10x"
+                        "10x",
+                        "neb"
                     ]
                 }
             }

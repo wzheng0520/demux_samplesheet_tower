@@ -69,6 +69,23 @@ process seqonly_sample_sheet {
 
 }
 
+process neb_sample_sheet {
+	publishDir "${params.output}", mode: 'copy', pattern: 'samplesheet_demux.csv'
+	container "wzheng0520/samplesheet_demux:samplesheet_demux"
+
+	input:
+	path library
+	path indexs
+	val  eln
+
+	output:
+	path "samplesheet_demux.csv", emit: samplesheet_demux
+    
+    script:
+	template 'neb.py'
+
+}
+
 
 
 workflow {
@@ -89,8 +106,11 @@ workflow {
 	if (params.type == "illumina") {
 	illumina_sample_sheet(library, indexs, file_path_output, eln)
 	}
-	else{
+	else if (params.type == "10x") {
 	tenx_sample_sheet(library, indexs, file_path_output, eln, override)
+	}
+	else {
+	neb_sample_sheet(library, indexs, eln)
 	}
 
 	}
