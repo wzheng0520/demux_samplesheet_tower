@@ -15,8 +15,8 @@ import csv
 
 
 def tenx_sample_sheet(library, indexs, output, eln, override):
-    # make library sheet into list -> index_well with column Index well used, sample name and Index plate
-    df = pd.read_excel(library, skiprows=4)
+    # make library prep+sequencing(library QC sheet) into list -> index_well with column Index well used, sample name and Index plate    
+    df = pd.read_excel(library, skiprows=[0,1,3])
     index_well = df[['Index well used', 'Sample Name', 'Index plate']].dropna().apply(list, axis=1).tolist()
     
     samplesheet_data=[]

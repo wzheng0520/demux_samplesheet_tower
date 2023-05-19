@@ -16,7 +16,7 @@ import re
 
 def sequencing_only_samplesheet(library, eln, type, override):
     df = pd.read_excel(library, skiprows=[0,1,3])    
-    print(df)
+    #print(df)
     #samplesheet_df=df[['Sample Name(s)', 'Index 1 (i7) sequences', 'index 2 (i5) sequences        (Forward)                    MiSeq']].fillna('')
     samplesheet_df=df[['Sample Name(s)', 'Index 1 (i7) sequences', 'index 2 (i5) sequences']].fillna('')
     samplesheet_list=samplesheet_df.dropna().apply(list, axis=1).tolist()
@@ -27,7 +27,7 @@ def sequencing_only_samplesheet(library, eln, type, override):
         #match the provided 10x Multiome_ATAC format NNNNNNNN\tNNNNNNNN\tNNNNNNNN\tNNNNNNNN
         #if re.match('[A-Z]{8}\s[A-Z]{8}\s[A-Z]{8}\s', i[1], flags=0):
         if re.match('[A-Z]{8,8}\\t[A-Z]{8,8}\\t[A-Z]{8,8}\\t[A-Z]{8,8}', i[1], flags=0):
-            print('ATAC')
+            #print('ATAC')
             #Not provide ELN, the sample_project column will not be on there
             if eln is None:
                 i.remove('')    #remove empty index 2
@@ -48,7 +48,7 @@ def sequencing_only_samplesheet(library, eln, type, override):
         
         #10x Multiome_GEX, Illumina, copy from provided samplesheet
         else:
-            print('GEX')
+            #print('GEX')
             #Not provide ELN, the sample_project column will not be on there
             if eln is None:
                 samplesheet_data.append(i)

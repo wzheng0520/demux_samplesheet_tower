@@ -23,6 +23,10 @@
                     "type": "string",
                     "description": "Experimenet Benchling ID"
                 },
+                "seq": {
+                    "type": "string",
+                    "description": "Sequencer type"
+                },
                 "override": {
                     "type": "string",
                     "description": "Override cycle"

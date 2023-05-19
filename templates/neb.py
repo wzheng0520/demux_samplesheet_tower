@@ -6,15 +6,15 @@ Created on Wed Feb 22 11:14:28 2023
 @author: wzheng
 """
 
-#import os
-#import sys
-#import glob
-#import argparse
+import os
+import sys
+import glob
+import argparse
 import pandas as pd
 import csv
 
-def neb_sample_sheet(library, indexs, eln):
-    df = pd.read_excel(library, skiprows=4)
+def neb_sample_sheet(library, indexs, output, eln):
+    df = pd.read_excel(library, skiprows=[0,1,3])
     index_well = df[['Index well used', 'Sample Name', 'Index plate']].dropna().apply(list, axis=1).tolist()
     for i in index_well:
         #set1
@@ -49,7 +49,7 @@ def neb_sample_sheet(library, indexs, eln):
     bclsetting2=['BarcodeMismatchesIndex2', '0', None, None]
     bclsetting3=['NoLaneSplitting', 'true', None, None]
     bcldata=['[BCLConvert_Data]', None, None, None]
-    with open('samplesheet_demux.csv', 'w') as f:
+    with open(output, 'w') as f:
         writer = csv.writer(f)
         writer.writerow(head)
         writer.writerow(head_contain)
@@ -68,4 +68,5 @@ def main():
 
 if __name__ == "__main__":
     main()
+
 

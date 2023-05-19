@@ -18,6 +18,7 @@ process illumina_sample_sheet {
 	path indexs
 	path output
 	val eln
+	val seq
 
 	output:
 	path "samplesheet_demux.csv", emit: samplesheet_demux
@@ -104,7 +105,7 @@ workflow {
 	
 	else{
 	if (params.type == "illumina") {
-	illumina_sample_sheet(library, indexs, file_path_output, eln)
+	illumina_sample_sheet(library, indexs, file_path_output, eln, seq)
 	}
 	else if (params.type == "10x") {
 	tenx_sample_sheet(library, indexs, file_path_output, eln, override)

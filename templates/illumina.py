@@ -13,12 +13,11 @@ Created on Fri Dec  2 13:24:21 2022
 import pandas as pd
 import csv
 
-
-def illumina_sample_sheet(library, indexs, output, eln):
-    # make library sheet into list -> index_well with column Index well used, sample name and Index plate
-    df = pd.read_excel(library, skiprows=4)
+# Define a function to create an Illumina sample sheet based on the library and index files
+def illumina_sample_sheet(library, indexs, output, eln, seq):
+    # Read the library QC sheet into a pandas dataframe and extract the Sample Name, Index well used, and Index plate information
+    df = pd.read_excel(library, skiprows=[0,1,3])
     index_well = df[['Index well used', 'Sample Name', 'Index plate']].dropna().apply(list, axis=1).tolist()
-    
     # match the index well's Index plate into index form
     for i in index_well:
         
@@ -26,25 +25,39 @@ def illumina_sample_sheet(library, indexs, output, eln):
         if i[2] == 'IDT for Illumina UD Indexes Plate A':
             df2 = pd.read_excel(indexs, skiprows=1, sheet_name = 'Plate A')
             i7=df2.loc[df2['Well ID'] == i[0]]['i7 Bases for Sample Sheet'].to_string(index=False).strip()
-            i5=df2.loc[df2['Well ID'] == i[0]]['i5 Bases for Sample Sheet NovaSeq 6000 with v1.0 reagent kits, MiSeq, HiSeq 2000/2500, NextSeq 2000 (Sample Sheet v2)'].to_string(index=False).strip()
+            if seq == 'Novaseq':
+                i5=df2.loc[df2['Well ID'] == i[0]]['i5 Bases for Sample Sheet iSeq, NovaSeq 6000 with v1.5 reagent kits, MiniSeq, NextSeq 500/550, HiSeq 3000/4000/X, NextSeq 2000 (Sample Sheet v1)'].to_string(index=False).strip()
+            else:
+                i5=df2.loc[df2['Well ID'] == i[0]]['i5 Bases for Sample Sheet NovaSeq 6000 with v1.0 reagent kits, MiSeq, HiSeq 2000/2500, NextSeq 2000 (Sample Sheet v2)'].to_string(index=False).strip()
        
         #Plate B
         elif i[2] == 'IDT for Illumina UD Indexes Plate B':
             df2 = pd.read_excel(indexs, skiprows=1, sheet_name = 'Plate B')
-            print(df2)
+            #print(df2)
             i7=df2.loc[df2['Well ID'] == i[0]]['i7 Bases for Sample Sheet'].to_string(index=False).strip()
-            i5=df2.loc[df2['Well ID'] == i[0]]['i5 Bases for Sample Sheet NovaSeq 6000 with v1.0 reagent kits, MiSeq, HiSeq 2000/2500, NextSeq 2000 (Sample Sheet v2)'].to_string(index=False).strip()
+            if seq == 'Novaseq':
+                i5=df2.loc[df2['Well ID'] == i[0]]['i5 Bases for Sample Sheet iSeq, NovaSeq 6000 with v1.5 reagent kits, MiniSeq, NextSeq 500/550, HiSeq 3000/4000/X, NextSeq 2000 (Sample Sheet v1)'].to_string(index=False).strip()
+            else:
+                i5=df2.loc[df2['Well ID'] == i[0]]['i5 Bases for Sample Sheet NovaSeq 6000 with v1.0 reagent kits, MiSeq, HiSeq 2000/2500, NextSeq 2000 (Sample Sheet v2)'].to_string(index=False).strip()
         #Plate C
         elif i[2] == 'IDT for Illumina UD Indexes Plate C':
             df2 = pd.read_excel(indexs, skiprows=2, sheet_name = 'Plate C')
             i7=df2.loc[df2['Well ID'] == i[0]]['i7 Bases for Sample Sheet'].to_string(index=False).strip()
-            i5=df2.loc[df2['Well ID'] == i[0]]['i5 Bases for Sample Sheet NovaSeq 6000 with v1.0 reagent kits, MiSeq, HiSeq 2000/2500, NextSeq 2000 (Sample Sheet v2)'].to_string(index=False).strip()
+            if seq == 'Novaseq':
+                i5=df2.loc[df2['Well ID'] == i[0]]['i5 Bases for Sample Sheet iSeq, NovaSeq 6000 with v1.5 reagent kits, MiniSeq, NextSeq 500/550, HiSeq 3000/4000/X, NextSeq 2000 (Sample Sheet v1)'].to_string(index=False).strip()
+            else:
+                i5=df2.loc[df2['Well ID'] == i[0]]['i5 Bases for Sample Sheet NovaSeq 6000 with v1.0 reagent kits, MiSeq, HiSeq 2000/2500, NextSeq 2000 (Sample Sheet v2)'].to_string(index=False).strip()
         
         #Plate D
         else:
             df2 = pd.read_excel(indexs, skiprows=2, sheet_name = 'Plate D')
             i7=df2.loc[df2['Well ID'] == i[0]]['i7 Bases for Sample Sheet'].to_string(index=False).strip()
-            i5=df2.loc[df2['Well ID'] == i[0]]['i5 Bases for Sample Sheet NovaSeq 6000 with v1.0 reagent kits, MiSeq, HiSeq 2000/2500, NextSeq 2000 (Sample Sheet v2)'].to_string(index=False).strip()
+            if seq == 'Novaseq':
+                i5=df2.loc[df2['Well ID'] == i[0]]['i5 Bases for Sample Sheet iSeq, NovaSeq 6000 with v1.5 reagent kits, MiniSeq, NextSeq 500/550, HiSeq 3000/4000/X, NextSeq 2000 (Sample Sheet v1)'].to_string(index=False).strip()
+            else:
+                i5=df2.loc[df2['Well ID'] == i[0]]['i5 Bases for Sample Sheet NovaSeq 6000 with v1.0 reagent kits, MiSeq, HiSeq 2000/2500, NextSeq 2000 (Sample Sheet v2)'].to_string(index=False).strip()
+        
+        # Append the index sequences and ELN project ID to the index well list
         i.append(i7)
         i.append(i5)
         i.append(eln)
@@ -66,7 +79,7 @@ def illumina_sample_sheet(library, indexs, output, eln):
     bclsetting2=['BarcodeMismatchesIndex2', '0', None, None]
     bclsetting3=['NoLaneSplitting', 'true', None, None]
     bcldata=['[BCLConvert_Data]', None, None, None]
-    with open('$output', 'w') as f:
+    with open(output, 'w') as f:
         writer = csv.writer(f)
         writer.writerow(head)
         writer.writerow(head_contain)
@@ -81,10 +94,9 @@ def illumina_sample_sheet(library, indexs, output, eln):
             writer.writerow(i)
 
 def main():
-    illumina_sample_sheet('$library', '$indexs', '$output', '$eln')
+    illumina_sample_sheet('$library', '$indexs', '$output', '$eln', '$seq')
 if __name__ == "__main__":
     main()
-            
 
             
             
