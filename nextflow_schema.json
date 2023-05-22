@@ -14,7 +14,7 @@
                 "library": {
                     "type": "string",
                     "description": "Location to library QC and pooling",
-                    "help_text": "Currently, the pipeline can only process input library information files in a fixed format. Please refer to this resource when uploading the input library information files. See [usage docs] (https://altoslabs.benchling.com/altoslabs/templates/tmpl_phYDaocW). \n\n Index plate name:\n"
+                    "help_text": "Currently, the pipeline can only process input library information files in a fixed format. Please refer to this resource when uploading the input library information files. See [usage docs] (https://altoslabs.benchling.com/altoslabs/templates/tmpl_phYDaocW). \n\n Index plate name:\n 1. Illumina: IDT for Illumina UD Indexes Plate A-D \n 2. 10X: 10X Dual Index Kit NN Set A, 10X Dual Index Kit NT Set A, 10X Dual Index Kit TT Set A, 10X Single Index Kit N Set A, 10X Single Index Kit T Set A. \n 3. NEB: NEBNext Multiplex Oligos for Illumina (96 UDI) set1"
                 },
                 "indexs": {
                     "type": "string",
