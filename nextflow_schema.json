@@ -25,7 +25,12 @@
                 },
                 "seq": {
                     "type": "string",
-                    "description": "Sequencer type"
+                    "description": "Sequencer type",
+                    "enum": [
+                        "Novaseq",
+                        "Nextseq",
+                        "Miseq"
+                    ]
                 },
                 "override": {
                     "type": "string",
