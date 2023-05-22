@@ -64,7 +64,7 @@ def neb_sample_sheet(library, indexs, output, eln):
             writer.writerow(i)
 
 def main():
-    neb_sample_sheet('$library', '$indexs', '$eln')
+    neb_sample_sheet('$library', '$indexs', '$output', '$eln')
 
 if __name__ == "__main__":
     main()
