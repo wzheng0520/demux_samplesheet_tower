@@ -63,13 +63,13 @@
             "title": "Output",
             "type": "object",
             "description": "",
+            "help_text": "The output file has the same name as 'samplesheet_demux.csv', so please only provide the path here.",
             "default": "",
             "properties": {
                 "output": {
                     "type": "string",
                     "description": "Location to store output files"
-                },
-            "help_text": "The output file has the same name as 'samplesheet_demux.csv', so please only provide the path here."
+                }
             }
         }
     },
