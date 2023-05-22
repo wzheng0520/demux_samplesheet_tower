@@ -77,6 +77,7 @@ process neb_sample_sheet {
 	input:
 	path library
 	path indexs
+	path output
 	val  eln
 
 	output:
