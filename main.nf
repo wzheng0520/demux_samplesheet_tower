@@ -97,6 +97,7 @@ workflow {
 	type = Channel.of(params.type)
 	override = Channel.of(params.override)
 	seqonly = Channel.of(params.seqonly)
+	seq = Channel.of(params.seq)
 	file_path_output = Channel.fromPath(params.output).map{ it+ '/samplesheet_demux.csv' }
 	
 	if (params.seqonly == 'yes'){
