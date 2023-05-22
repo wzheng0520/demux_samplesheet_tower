@@ -112,7 +112,7 @@ workflow {
 	tenx_sample_sheet(library, indexs, file_path_output, eln, override)
 	}
 	else {
-	neb_sample_sheet(library, indexs, eln)
+	neb_sample_sheet(library, indexs, file_path_output, eln)
 	}
 
 	}
