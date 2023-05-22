@@ -32,11 +32,13 @@
                         "Novaseq",
                         "Nextseq",
                         "Miseq"
-                    ]
+                    ],
+                    "help_text": "When working with Novaseq data, the current pipeline can only handle one lane at a time. If you need to separate the data into different lanes or add lane information to the sample sheet, please edit it after the run is completed."
                 },
                 "override": {
                     "type": "string",
-                    "description": "Override cycle"
+                    "description": "Override cycle",
+                    "help_text": "The format of the override cycle is Y;I;I;Y. For example, Y150;I8;I8;Y150."
                 },
                 "seqonly": {
                     "type": "string",
