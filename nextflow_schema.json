@@ -14,7 +14,7 @@
                 "library": {
                     "type": "string",
                     "description": "Location to library QC and pooling",
-                    "help_text": "Currently, the pipeline can only process input library information files in a fixed format. Please refer to this resource when uploading the input library information files. See [usage docs] (https://altoslabs.benchling.com/altoslabs/templates/tmpl_phYDaocW)"
+                    "help_text": "Currently, the pipeline can only process input library information files in a fixed format. Please refer to this resource when uploading the input library information files. See [usage docs] (https://altoslabs.benchling.com/altoslabs/templates/tmpl_phYDaocW) \n Index plate name:\n"
                 },
                 "indexs": {
                     "type": "string",
