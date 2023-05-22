@@ -13,11 +13,13 @@
             "properties": {
                 "library": {
                     "type": "string",
-                    "description": "Location to library QC and pooling"
+                    "description": "Location to library QC and pooling",
+                    "help_text": "Currently, the pipeline can only process input library information files in a fixed format. Please refer to this resource when uploading the input library information files. See [usage docs] (https://altoslabs.benchling.com/altoslabs/templates/tmpl_phYDaocW)"
                 },
                 "indexs": {
                     "type": "string",
-                    "description": "Location of index plates"
+                    "description": "Location of index plates",
+                    "help_text": "Currently, the pipeline is only capable of handling index plates that are included in the list available at the following link. Please consult this resource when selecting the appropriate index for your needs. See [usage docs] (https://github.com/wzheng0520/demux_samplesheet_tower/tree/updating/index)"
                 },
                 "eln": {
                     "type": "string",
