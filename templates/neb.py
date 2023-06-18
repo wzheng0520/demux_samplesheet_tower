@@ -25,11 +25,11 @@ def neb_sample_sheet(library, indexs, output, eln,seq):
                 used_index = i[0]
             #print(used_index)
             df2 = pd.read_excel(indexs, skiprows=2, sheet_name = 'set1')
+            i7=df2.loc[df2['WELL POSITION'] == used_index]['Unnamed: 2'].to_string(index=False).strip()
             if seq == 'Novaseq':
                 i5=df2.loc[df2['WELL POSITION'] == used_index]['REVERSE STRAND WORKFLOW*'].to_string(index=False).strip()
             else:
                 i5=df2.loc[df2['WELL POSITION'] == used_index]['FORWARD STRAND WORKFLOW*'].to_string(index=False).strip()
-            i5=df2.loc[df2['WELL POSITION'] == used_index]['FORWARD STRAND WORKFLOW*'].to_string(index=False).strip()
         i.append(i7)
         i.append(i5)
         i.append(eln)
