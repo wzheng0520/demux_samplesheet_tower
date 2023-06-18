@@ -13,7 +13,7 @@ import argparse
 import pandas as pd
 import csv
 
-def neb_sample_sheet(library, indexs, output, eln):
+def neb_sample_sheet(library, indexs, output, eln,seq):
     df = pd.read_excel(library, skiprows=[0,1,3])
     index_well = df[['Index well used', 'Sample Name', 'Index plate']].dropna().apply(list, axis=1).tolist()
     for i in index_well:
@@ -25,7 +25,10 @@ def neb_sample_sheet(library, indexs, output, eln):
                 used_index = i[0]
             #print(used_index)
             df2 = pd.read_excel(indexs, skiprows=2, sheet_name = 'set1')
-            i7=df2.loc[df2['WELL POSITION'] == used_index]['Unnamed: 2'].to_string(index=False).strip()
+            if seq == 'Novaseq':
+                i5=df2.loc[df2['WELL POSITION'] == used_index]['REVERSE STRAND WORKFLOW*'].to_string(index=False).strip()
+            else:
+                i5=df2.loc[df2['WELL POSITION'] == used_index]['FORWARD STRAND WORKFLOW*'].to_string(index=False).strip()
             i5=df2.loc[df2['WELL POSITION'] == used_index]['FORWARD STRAND WORKFLOW*'].to_string(index=False).strip()
         i.append(i7)
         i.append(i5)
@@ -64,7 +67,7 @@ def neb_sample_sheet(library, indexs, output, eln):
             writer.writerow(i)
 
 def main():
-    neb_sample_sheet('$library', '$indexs', '$output', '$eln')
+    neb_sample_sheet('$library', '$indexs', '$output', '$eln', '$seq')
 
 if __name__ == "__main__":
     main()

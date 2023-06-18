@@ -64,7 +64,7 @@
             "type": "object",
             "description": "",
             "help_text": "The output file has the same name as 'samplesheet_demux.csv', so please only provide the path here.",
-            "default": "",
+            "default": "",/Users/wzheng/Documents/GitHub/demux_samplesheet_tower/main.nf
             "properties": {
                 "output": {
                     "type": "string",
