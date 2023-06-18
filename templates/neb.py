@@ -18,7 +18,7 @@ def neb_sample_sheet(library, indexs, output, eln,seq):
     index_well = df[['Index well used', 'Sample Name', 'Index plate']].dropna().apply(list, axis=1).tolist()
     for i in index_well:
         #set1
-        if i[2] == 'NEBNext Multiplex Oligos for Illumina (96 UDI) set1':
+        if i[2] == 'NEBNext® Multiplex Oligos for Illumina® (96 Unique Dual Index Primer Pairs) set1':
             if i[0][1] == '0':
                 used_index = i[0][0]+i[0][-1]
             else:
